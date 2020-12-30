@@ -12,7 +12,7 @@
   </head>
   <body>
     <div>
-      <input id="speed" type="text" placeholder="Enter speed"/>
+      <input id="speed" type="number" placeholder="Enter speed"/>
       <button type="button" class="btn btn-success" id="button1">Click Me</button>
       <input id="output" type="text" placeholder="hiya..." readonly>
     </div>
@@ -23,6 +23,7 @@
     <script>
       $("#button1").click(function(e) {
         e.preventDefault();
+        if ($('#speed').val() == "") {return;}
         $.getJSON("/api/power/" + $('#speed').val(), function(data) {
           $('#output').val(data.value);
         });
