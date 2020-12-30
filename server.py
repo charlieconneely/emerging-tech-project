@@ -16,3 +16,6 @@ def power(speed):
     speed = float(speed)
     result = loaded_model.predict([speed])
     return jsonify({"value":result.item(0)})
+
+if __name__ == "__main__":
+    print("See README for instructions on running the application.")
