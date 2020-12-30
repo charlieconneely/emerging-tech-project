@@ -10,10 +10,9 @@ app = fl.Flask(__name__)
 def home():
     return app.send_static_file('index.html')
 
-@app.route("/api/power")
-def power():
+@app.route("/api/power/<speed>")
+def power(speed):
     loaded_model = kr.models.load_model('model.h5')
-    result = loaded_model.predict([10.0])
-    resultJSON = jsonify({"value":result.item(0)})
-    #data = {"value":np.random.uniform()}
-    return resultJSON
+    speed = float(speed)
+    result = loaded_model.predict([speed])
+    return jsonify({"value":result.item(0)})
